@@ -34,17 +34,28 @@ var isPalindrome = function(x) {
   //   reverse_x = reverse_x * 10 + (i % 10);
   // }
   // return reverse_x === x;
-  
+
   // 既然是回文那么我只遍历一半呢
-  let reverse_x = 0;
-  let center_index,minVal=1;
-  let x_leng = x.toString().length;
-  center_index = Math.ceil(x_leng / 2);
-  minVal = Math.pow(10, center_index);
-  for (let i = x; i >= minVal; i = Math.floor(i / 10)) {
-    reverse_x = reverse_x * 10 + (i % 10);
+  // let reverse_x = 0;
+  // let center_index,
+  //   minVal = 1;
+  // let x_leng = x.toString().length;
+  // center_index = Math.ceil(x_leng / 2);
+  // minVal = Math.pow(10, center_index);
+  // for (let i = x; i >= minVal; i = Math.floor(i / 10)) {
+  //   reverse_x = reverse_x * 10 + (i % 10);
+  // }
+  // return reverse_x === Math.floor(x / minVal);
+
+  // 利用 which 替换for
+  if (x < 0) return false;
+  let temp = x;
+  let res = 0;
+  while (x) {
+    res = res * 10 + (x % 10);
+    x = Math.floor(x / 10);
   }
-  return reverse_x === Math.floor(x / minVal);
+  return res == temp;
 };
 // @lc code=end
 
