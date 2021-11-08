@@ -58,7 +58,7 @@ var mergeKLists = function(lists) {
   // }
   // deepList(arr, arr_list);
   // return arr_list;
-  // 思路二：使用数据结构链表思路
+  // 思路二：使用数据结构链表思路：新建一个空白链表以及一个移动的指针指向将要操作的节点上
   // 两两合并
   let ans = null;
   for (let i = 0; i < lists.length; i++) {
@@ -70,7 +70,7 @@ var mergeKLists = function(lists) {
     let newList = new ListNode();
     let cur = newList;
     while (pHead1 !== null && pHead2 !== null) {
-      // 如果后者大于前者
+      // 找出更小筛入队列中
       if(pHead1.val < pHead2.val) {
         cur.next = pHead1
         pHead1 = pHead1.next
@@ -79,7 +79,6 @@ var mergeKLists = function(lists) {
         pHead2 = pHead2.next
       }
       cur = cur.next;
-      console.log("---",cur,'99', newList.next);
     }
     cur.next = pHead1 || pHead2;
     // console.log(newList,cur);
