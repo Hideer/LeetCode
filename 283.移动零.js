@@ -39,15 +39,28 @@ var moveZeroes = function(nums) {
   // }
 
   // 以不等于 0 作为入口；一次循环，并添加一个计数器
-  let j = 0;
-  for(let i=0;i<nums.length;i++) {
-    //当前元素!=0，就把其交换到左边，等于0的交换到右边
-    if(nums[i]!=0) {
-      let tmp = nums[i]; // 临时存下来
-      nums[i] = nums[j];
-      nums[j++] = tmp;
-    }
-  }
+  // let j = 0;
+  // for (let i = 0; i < nums.length; i++) {
+  //   //当前元素!=0，就把其交换到左边，等于0的交换到右边
+  //   if (nums[i] != 0) {
+  //     let tmp = nums[i]; // 临时存下来
+  //     nums[i] = nums[j];
+  //     nums[j++] = tmp;
+  //   }
+  // }
+
+  // 思考一下，如果按上面的思路以等于 0 作为判断依据并且不遍历两次呢？
+
+  // 以等于 0 作为入口；一次循环，并添加一个计数器
+  // let j = nums.length-1;
+  // for (let i = 0; i < nums.length; i++) {
+  //   //当前元素!=0，就把其交换到左边，等于0的交换到右边
+  //   if (nums[i] === 0) {
+  //     // let tmp = nums[i]; // 临时存下来
+  //     nums[i] = nums[i+1];
+  //     nums[j--] = tmp;
+  //   }
+  // }
 };
 // moveZeroes([0, 99999, 3, 12, 0]);
 // @lc code=end
