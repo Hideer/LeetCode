@@ -77,41 +77,40 @@ var reverseKGroup = function(head, k) {
         }
     }
     const nex = tail.next; // 把除去当前组的剩余链表保存
-    console.log("mdmdmd");
-    // console.log("-----", pre, head, tail, nex);
-    // console.log("-----", head, tail);
+    console.log("倒叙前", head, tail);
     [head, tail] = myReverse(head, tail);
-    return;
     // 把子链表重新接回原链表
-    // console.log(123,head, tail);
-    // pre.next = head;// 这个没意义我注释了
-    // tail.next = nex;
-    // pre = tail;
-    // head = tail.next;
+    console.log("倒叙后", head, tail, JSON.stringify(pre));
+    pre.next = head;
+    tail.next = nex;
+    console.log(JSON.stringify(pre), nex, tail);
+    pre = tail;
+    head = tail.next;
   }
+  console.log("结果:", hair.next === head, head, JSON.stringify(hair));
   return hair.next;
 };
 const myReverse = (head, tail) => {
   // 将当前链表和分组前的节点传入
-    console.log(head, tail);
-    console.log('开始反转');
+    // console.log(head, tail);
+    // console.log('开始反转');
     let prev = tail.next;
     let p = head;
-    console.log(prev, tail,'----');
-    while (prev.val !== tail.val) {
+    // console.log(prev, tail,'----');
+    while (prev !== tail) {
         // console.log('单次while处理前:',prev, tail);
         // console.log('99',p);
         const nex = p.next; // 先存下头结点的内容
         p.next = prev;
         prev = p;
         p = nex;
-        console.log('单次while处理后:',prev, tail);
+        // console.log('单次while处理后:',prev, tail);
     }
-    console.log("结束反转");
-    console.log(tail, head);
+    // console.log("结束反转");
+    // console.log(tail, head);
     return [tail, head];
 }
-reverseKGroup({ val: 1, next: { val: 2, next: { val: 3, next: { val: 4, next: null } } } },3);
+reverseKGroup({ val: 1, next: { val: 2, next: { val: 3, next: { val: 4, next: null } } } },2);
 // 随手写了个链表倒叙的功能
 // reverseGroup(
 //   { val: 1, next: { val: 2, next: { val: 3, next: { val: 4, next: null } } } }
@@ -144,6 +143,5 @@ reverseKGroup({ val: 1, next: { val: 2, next: { val: 3, next: { val: 4, next: nu
 //   //   console.log(JSON.stringify(pre), cur, next);
 //   // }
 // }
-
 // @lc code=end
 
